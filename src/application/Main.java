@@ -44,7 +44,6 @@ public class Main {
 
             System.out.println("--------------------------");
         }
-        System.out.println(list.listarFuncionarios());
 
         logger.info("""
                 OPÇÕES: 
@@ -59,23 +58,65 @@ public class Main {
 
         int opcao = sc.nextInt();
 
-        switch (opcao) {
-            case 1:
-                System.out.print("Digite o ID do funcionário que deseja atualizar: ");
-                int id = sc.nextInt();
+        while (opcao != 5) {
+            switch (opcao) {
+                case 1:
+                    System.out.print("Digite o ID do funcionário que deseja atualizar: ");
+                    int id = sc.nextInt();
 
-                System.out.print("Novo nome do funcionário: ");
-                String atualizaNome = sc.next();
+                    System.out.print("Novo nome do funcionário: ");
+                    String atualizaNome = sc.next();
 
-                System.out.print("Novo cargo do funcionário: ");
-                String atualizaCargo = sc.next();
+                    System.out.print("Novo cargo do funcionário: ");
+                    String atualizaCargo = sc.next();
 
-                System.out.print("Novo salário do funcionário: ");
-                Double atualizaSalario = sc.nextDouble();
+                    System.out.print("Novo salário do funcionário: ");
+                    Double atualizaSalario = sc.nextDouble();
 
-                list.atualizarFuncionario(id, atualizaNome, atualizaCargo, atualizaSalario);
+                    list.atualizarFuncionario(id, atualizaNome, atualizaCargo, atualizaSalario);
 
-                System.out.println(list.listarFuncionarios());
+                    System.out.println(list.listarFuncionarios());
+
+                    break;
+
+                case 2:
+                    System.out.print("Digite o ID do funcionário que deseja deletar: ");
+                    id = sc.nextInt();
+
+                    list.removerFuncionario(id);
+
+                    break;
+
+                case 3:
+                    System.out.print("Digite o ID do funcionário que deseja encontrar: ");
+                    id = sc.nextInt();
+
+                    list.buscarFuncionarioPorId(id);
+
+                    break;
+
+                case 4:
+                    System.out.println(list.listarFuncionarios());
+
+                    break;
+
+                default:
+                    logger.info("OPÇÃO INVÁLIDA!");
+
+            }
+
+            logger.info("""
+                OPÇÕES: 
+                [1] Atualizar dados do funcionário;
+                [2] Deletar dados do funcionário;
+                [3] Buscar dados de algum funcionário por ID;
+                [4] Listar dados de todos funcionários registrados;
+                [5] Encerrar sistema;
+                
+                Digite a sua opção: 
+                """);
+
+            opcao = sc.nextInt();
         }
 
         sc.close();

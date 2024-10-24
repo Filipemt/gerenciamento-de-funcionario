@@ -33,6 +33,8 @@ public class FuncionarioRepositorio {
         for (Funcionario funcionario : funcionarioList) {
             if (funcionario.getId() == id) {
                 return funcionario;
+            } else {
+                System.out.println("Não existe funcionário com esse ID!");
             }
         }
 
