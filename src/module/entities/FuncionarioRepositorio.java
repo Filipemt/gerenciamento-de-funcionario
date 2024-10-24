@@ -13,13 +13,12 @@ public class FuncionarioRepositorio {
 
     public void atualizarFuncionario(int id, String nome, String cargo, Double salario) {
         for (Funcionario funcionario : funcionarioList) {
-            if (funcionario.getId() == id) {
+            if (funcionario.getId() != id) {
                 funcionario.setNome(nome);
                 funcionario.setCargo(cargo);
                 funcionario.setSalario(salario);
 
                 break;
-
             } else {
                 System.out.println("Funcionário com o Id: " + id + " não encontrado!");
             }

@@ -26,24 +26,57 @@ public class Main {
         int n = sc.nextInt();
 
         for (int i=1; i<= n; i++) {
-            logger.info("Digite o nome do funcionário: ");
+            System.out.print("Digite o nome do funcionário: ");
             String nome = sc.next();
 
-            logger.info("Digite o cargo do funcionário: ");
+            System.out.print("Digite o cargo do funcionário: ");
             String cargo = sc.next();
 
-            logger.info("Digite o salário do funcionário: ");
+            System.out.print("Digite o salário do funcionário: ");
             Double salario = sc.nextDouble();
 
-            logger.info("Digite a data de admissão do funcionário: (dia/mês/ano)");
+            System.out.print("Digite a data de admissão do funcionário: (dia/mês/ano)");
             String input = sc.next();
             LocalDate date = LocalDate.parse(input, formato);
 
             Funcionario novoFuncionario = new Funcionario(i, nome, cargo, salario, date);
             list.adicionarFuncionario(novoFuncionario);
-        }
 
+            System.out.println("--------------------------");
+        }
         System.out.println(list.listarFuncionarios());
+
+        logger.info("""
+                OPÇÕES: 
+                [1] Atualizar dados do funcionário;
+                [2] Deletar dados do funcionário;
+                [3] Buscar dados de algum funcionário por ID;
+                [4] Listar dados de todos funcionários registrados;
+                [5] Encerrar sistema;
+                
+                Digite a sua opção: 
+                """);
+
+        int opcao = sc.nextInt();
+
+        switch (opcao) {
+            case 1:
+                System.out.print("Digite o ID do funcionário que deseja atualizar: ");
+                int id = sc.nextInt();
+
+                System.out.print("Novo nome do funcionário: ");
+                String atualizaNome = sc.next();
+
+                System.out.print("Novo cargo do funcionário: ");
+                String atualizaCargo = sc.next();
+
+                System.out.print("Novo salário do funcionário: ");
+                Double atualizaSalario = sc.nextDouble();
+
+                list.atualizarFuncionario(id, atualizaNome, atualizaCargo, atualizaSalario);
+
+                System.out.println(list.listarFuncionarios());
+        }
 
         sc.close();
     }
