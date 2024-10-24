@@ -92,7 +92,7 @@ public class Main {
                     System.out.print("Digite o ID do funcionário que deseja encontrar: ");
                     id = sc.nextInt();
 
-                    list.buscarFuncionarioPorId(id);
+                    System.out.println(list.buscarFuncionarioPorId(id));
 
                     break;
 
