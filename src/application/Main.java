@@ -27,15 +27,16 @@ public class Main {
 
         for (int i=1; i<= n; i++) {
             System.out.print("Digite o nome do funcionário: ");
-            String nome = sc.next();
+            sc.nextLine();
+            String nome = sc.nextLine();
 
             System.out.print("Digite o cargo do funcionário: ");
-            String cargo = sc.next();
+            String cargo = sc.nextLine();
 
             System.out.print("Digite o salário do funcionário: ");
             Double salario = sc.nextDouble();
 
-            System.out.print("Digite a data de admissão do funcionário: (dia/mês/ano)");
+            System.out.print("Digite a data de admissão do funcionário: (dia/mês/ano): ");
             String input = sc.next();
             LocalDate date = LocalDate.parse(input, formato);
 
@@ -65,17 +66,17 @@ public class Main {
                     int id = sc.nextInt();
 
                     System.out.print("Novo nome do funcionário: ");
-                    String atualizaNome = sc.next();
+                    sc.nextLine();
+                    String atualizaNome = sc.nextLine();
 
                     System.out.print("Novo cargo do funcionário: ");
-                    String atualizaCargo = sc.next();
+                    String atualizaCargo = sc.nextLine();
 
                     System.out.print("Novo salário do funcionário: ");
                     Double atualizaSalario = sc.nextDouble();
 
                     list.atualizarFuncionario(id, atualizaNome, atualizaCargo, atualizaSalario);
 
-                    System.out.println(list.listarFuncionarios());
 
                     break;
 
@@ -102,7 +103,6 @@ public class Main {
 
                 default:
                     logger.info("OPÇÃO INVÁLIDA!");
-
             }
 
             logger.info("""
