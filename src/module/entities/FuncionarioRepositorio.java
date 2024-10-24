@@ -12,30 +12,36 @@ public class FuncionarioRepositorio {
     }
 
     public void atualizarFuncionario(int id, String nome, String cargo, Double salario) {
+        boolean encontrado = false;
+
         for (Funcionario funcionario : funcionarioList) {
             if (funcionario.getId() == id) {
                 funcionario.setNome(nome);
                 funcionario.setCargo(cargo);
                 funcionario.setSalario(salario);
+                encontrado = true;
 
                 break;
             }
+        }
+        if (!encontrado) {
+            System.out.println("Não existe funcionário com este Id");
         }
     }
 
     public void removerFuncionario(int id) {
         funcionarioList.removeIf(funcionario -> funcionario.getId() == id);
+
     }
 
     public Funcionario buscarFuncionarioPorId(int id) {
         for (Funcionario funcionario : funcionarioList) {
             if (funcionario.getId() == id) {
                 return funcionario;
-            } else {
-                System.out.println("Não existe funcionário com esse ID!");
             }
         }
 
+        System.out.println("Não existe funcionário com esse ID!");
         return null;
     }
 

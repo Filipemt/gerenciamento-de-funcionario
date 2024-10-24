@@ -65,18 +65,21 @@ public class Main {
                     System.out.print("Digite o ID do funcionário que deseja atualizar: ");
                     int id = sc.nextInt();
 
-                    System.out.print("Novo nome do funcionário: ");
-                    sc.nextLine();
-                    String atualizaNome = sc.nextLine();
+                    Funcionario funcionarioExiste = list.buscarFuncionarioPorId(id);
 
-                    System.out.print("Novo cargo do funcionário: ");
-                    String atualizaCargo = sc.nextLine();
+                    if (funcionarioExiste != null) {
+                        System.out.print("Novo nome do funcionário: ");
+                        sc.nextLine();
+                        String atualizaNome = sc.nextLine();
 
-                    System.out.print("Novo salário do funcionário: ");
-                    Double atualizaSalario = sc.nextDouble();
+                        System.out.print("Novo cargo do funcionário: ");
+                        String atualizaCargo = sc.nextLine();
 
-                    list.atualizarFuncionario(id, atualizaNome, atualizaCargo, atualizaSalario);
+                        System.out.print("Novo salário do funcionário: ");
+                        Double atualizaSalario = sc.nextDouble();
 
+                        list.atualizarFuncionario(id, atualizaNome, atualizaCargo, atualizaSalario);
+                    }
 
                     break;
 
@@ -84,7 +87,11 @@ public class Main {
                     System.out.print("Digite o ID do funcionário que deseja deletar: ");
                     id = sc.nextInt();
 
-                    list.removerFuncionario(id);
+                    funcionarioExiste = list.buscarFuncionarioPorId(id);
+
+                    if (funcionarioExiste != null) {
+                        list.removerFuncionario(id);
+                    }
 
                     break;
 
@@ -102,7 +109,7 @@ public class Main {
                     break;
 
                 default:
-                    logger.info("OPÇÃO INVÁLIDA!");
+                    logger.info("OPCAO INVÁLIDA!");
             }
 
             logger.info("""
